@@ -13,6 +13,12 @@ io.on('connection', (socket) => {
     socket.on('stream', id => {
         socket.broadcast.emit('new-connection', id)
     })
+
+    socket.on('chat', function(data){
+        console.log(data);
+        io.sockets.emit('chat', data);
+    });
+
 }) 
 
 server.listen(port, () => {

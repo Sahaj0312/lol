@@ -13,6 +13,24 @@ me.setAttribute('playsinline', '');
 
 const btn = document.getElementById('join-call')
 
+var message = document.getElementById('message'),
+    handle = document.getElementById('handle'),
+    bttn = document.getElementById('send'),
+    output = document.getElementById('output');
+
+bttn.addEventListener('click', function(){
+  socket.emit('chat', {
+      message: message.value,
+      handle: handle.value
+      });
+  message.value = "";
+});
+
+socket.on('chat', function(data){
+  console.log("recieved chat")
+  output.innerHTML += '<p>' + data.handle + ':' + data.message + '</p>';
+});
+
 
 navigator.mediaDevices.getUserMedia({
     video: true,
@@ -54,8 +72,5 @@ function addVideoStream(video, stream) {
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
-    video.addEventListener('loadedmetadata', () => {
-      video.play()
-    })
     vids.append(video)
 }
