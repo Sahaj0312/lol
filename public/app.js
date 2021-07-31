@@ -8,7 +8,7 @@ document.body.appendChild(p)
 
 const me = document.createElement('video')
 me.setAttribute('autoplay', '');
-me.setAttribute('muted', '');
+//me.setAttribute('muted', '');
 me.setAttribute('playsinline', '');
 
 const btn = document.getElementById('join-call')
@@ -16,11 +16,12 @@ const btn = document.getElementById('join-call')
 var message = document.getElementById('message'),
     handle = document.getElementById('handle'),
     bttn = document.getElementById('send'),
-    output = document.getElementById('output');
+    output = document.getElementById('output')
+;
 
 
 
-bttn.addEventListener('click', function(){
+bttn.addEventListener('click', () => {
   socket.emit('chat', {
       message: message.value,
       handle: handle.value
@@ -28,7 +29,7 @@ bttn.addEventListener('click', function(){
   message.value = "";
 });
 
-socket.on('chat', function(data){
+socket.on('chat', (data) => {
   console.log("recieved chat")
   output.innerHTML += '<p> <strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
@@ -72,7 +73,7 @@ function newConnection(id, stream) {
 function addVideoStream(video, stream) {
     video.srcObject = stream
     video.setAttribute('autoplay', '');
-    video.setAttribute('muted', '');
+    //video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     vids.append(video)
 }
