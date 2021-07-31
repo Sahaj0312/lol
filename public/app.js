@@ -57,7 +57,7 @@ navigator.mediaDevices.getUserMedia({
 
 peer.on('open', id => {
     socket.emit('stream', id)
-    p.innerHTML += `Your id is ${id}`
+    p.innerHTML += `Your peer id is ${id}`
 })
 
 
