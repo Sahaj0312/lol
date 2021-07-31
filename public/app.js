@@ -35,7 +35,7 @@ socket.on('chat', function(data){
 
 
 navigator.mediaDevices.getUserMedia({
-    video: false,
+    video: true,
     audio: true
   }).then(stream => {
     addVideoStream(me, stream)
