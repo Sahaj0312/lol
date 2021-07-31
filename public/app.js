@@ -6,7 +6,7 @@ const vids = document.getElementById('vids')
 const p = document.createElement('p')
 document.body.appendChild(p)
 
-const me = document.createElement('audio')
+const me = document.createElement('video')
 me.setAttribute('autoplay', '');
 me.setAttribute('muted', '');
 me.setAttribute('playsinline', '');
@@ -42,7 +42,7 @@ navigator.mediaDevices.getUserMedia({
 
     peer.on('call', call => {
         call.answer(stream)
-        const vid = document.createElement('audio')
+        const vid = document.createElement('video')
         call.on('stream', userVideoStream => {
             addVideoStream(vid, userVideoStream)
           })
@@ -63,7 +63,7 @@ peer.on('open', id => {
 
 function newConnection(id, stream) {
     const call = peer.call(id,stream)
-    const vid = document.createElement('audio')
+    const vid = document.createElement('video')
     call.on('stream', userVideoStream => {
         addVideoStream(vid, userVideoStream)
       })
