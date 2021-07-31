@@ -18,6 +18,8 @@ var message = document.getElementById('message'),
     bttn = document.getElementById('send'),
     output = document.getElementById('output');
 
+
+
 bttn.addEventListener('click', function(){
   socket.emit('chat', {
       message: message.value,
@@ -28,7 +30,7 @@ bttn.addEventListener('click', function(){
 
 socket.on('chat', function(data){
   console.log("recieved chat")
-  output.innerHTML += '<p>' + data.handle + ':' + data.message + '</p>';
+  output.innerHTML += '<p> <strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
 
 
